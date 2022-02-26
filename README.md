@@ -168,9 +168,55 @@ This is calles both yosys and abc
 
 ##  Day 2 : Floor planing
 
+Day 2 workshop focused on chip floor planning and placement, where we learnt about unitization facor, aspect ratio, pre-placed cells, de-coupling capacitors, need for libraries and characterization, cell design flow with the help of inverter and general timing perameters like threshold and propagation delay. Also gained an hands on experience by implementing floorplan and palcement for picorv32a design using OpenLane.
 
-    
-    
+**Take aways of Day 2**
+
+1. Determaining aspect ratio 
+
+       Aspect Ratio = Height of the core /Weidth of the core
+   * If aspect ratio = 1 (Chip is square) else (Chip is rectangle)
+  
+2. Utilization Factor
+  
+       Utilization Factor = Area occupied by the netlist/Total area of the core
+     
+     
+   * If all logic cells occupies the complete area of the core => Utilization factor = 1
+  
+3. Preplaced cells :
+ 
+   * These cells are placed only once and reused multiple times
+
+   * The automated placement and routing tools doesn't touch the locations of preplaced cells.
+
+4. Decoupling Capacitor :
+
+   * Gives power supply to preplaced cells locally, inorder to prevent undefined logic state.
+
+5. Power planing :
+
+   * Due to power supply at single place Ground Bounce and Voltate doop may be occures near placed cells and in buses to avoid that we can use power supply with multiple vdd and      vss lines, for example Mesh power planning.
+ 6. Pin placement :
+ 
+   * Bigger the size smaller the resitance; clock paths should be least resistive. Therefore, clock pins are bigger in size
+ 
+ 7. Flooplan :
+ 
+   * Standard cell placement happens in placement stage not in floorplan. Here chip dimensions are determained using size of logic less in the netlist.
+ 
+ 8. Library :
+ 
+   * Library has width, height, voltage requirments, timming constraints, design constraints of each and every cells in the shell with different sizes (to select based on the requirment of resistivity)
+
+ 9. Placement :
+ 
+   * Buffers are placed between inputs and cells to reduce the skew and save signal integrety.
+  
+   * We place group group of cells together   
+  
+  
+     
  
  
     

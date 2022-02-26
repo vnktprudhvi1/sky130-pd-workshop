@@ -172,48 +172,105 @@ Day 2 workshop focused on chip floor planning and placement, where we learnt abo
 
 **Take aways of Day 2**
 
-1. Determaining aspect ratio 
+**1. Determaining aspect ratio :**
 
        Aspect Ratio = Height of the core /Weidth of the core
    * If aspect ratio = 1 (Chip is square) else (Chip is rectangle)
   
-2. Utilization Factor
+**2. Utilization Factor :**
   
        Utilization Factor = Area occupied by the netlist/Total area of the core
      
      
    * If all logic cells occupies the complete area of the core => Utilization factor = 1
   
-3. Preplaced cells :
+**3. Preplaced cells :**
  
    * These cells are placed only once and reused multiple times
 
    * The automated placement and routing tools doesn't touch the locations of preplaced cells.
 
-4. Decoupling Capacitor :
+**4. Decoupling Capacitor :**
 
    * Gives power supply to preplaced cells locally, inorder to prevent undefined logic state.
 
-5. Power planing :
+**5. Power planing :**
 
    * Due to power supply at single place Ground Bounce and Voltate doop may be occures near placed cells and in buses to avoid that we can use power supply with multiple vdd and      vss lines, for example Mesh power planning.
- 6. Pin placement :
+  
+ **6. Pin placement :**
  
    * Bigger the size smaller the resitance; clock paths should be least resistive. Therefore, clock pins are bigger in size
  
- 7. Flooplan :
+ **7. Flooplan :**
  
    * Standard cell placement happens in placement stage not in floorplan. Here chip dimensions are determained using size of logic less in the netlist.
- 
- 8. Library :
- 
-   * Library has width, height, voltage requirments, timming constraints, design constraints of each and every cells in the shell with different sizes (to select based on the requirment of resistivity)
 
- 9. Placement :
+
+ **8. Placement :**
  
-   * Buffers are placed between inputs and cells to reduce the skew and save signal integrety.
+   * Buffers are placed between inputs and cells to reduce the slew and save signal integrety.
+
+   * We do abatement for some logic to reduce the time delay and to increase the performance for perticular section.   
+ 
+ **9. Library characterization and modeling :**
+ 
+   * Library has  standard cells with differnt functionalality, different sizes, different vth. 
+   
+   ![Screenshot (7)](https://user-images.githubusercontent.com/100410542/155857917-04942deb-1885-4174-9ad6-f315ef62e8a3.png)
+   
+   **LABS**
+   
+  **1. Floorplan using OpenLane**
   
-   * We do abatement for some logic to reduce the time delay and to increase the performance for perticular section.      
+     Floorplan variables exploration in README.md
+     
+  ![image](https://user-images.githubusercontent.com/100410542/155859249-c9266ff3-1d6d-4777-834b-7bb8494ff091.png)
+  
+     Flooeplan. tcl file oberving default values for the switches
+     
+  ![image](https://user-images.githubusercontent.com/100410542/155859336-0d183516-a656-43a5-92fc-03f00600e0b9.png)
+  
+     run_floorplan
+     
+   ![image](https://user-images.githubusercontent.com/100410542/155859452-68646dfe-3201-4f49-bdd9-db4acc87ba9a.png)
+ 
+    runs folder
+    
+  ![image](https://user-images.githubusercontent.com/100410542/155859588-025daa52-9f45-406c-876e-884938389041.png)
+  
+  **Magic tool to explore Layout of floorplan**
+
+      magic -T /home/prudhvivnkt/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.floorplan.def &
+
+![image](https://user-images.githubusercontent.com/100410542/155859724-88bcca80-6000-45f0-b350-901bc1783b5a.png)
+    
+ ![image](https://user-images.githubusercontent.com/100410542/155859763-dac48d16-3eb5-4252-9f08-21907c7bc4a9.png)
+ 
+ ![image](https://user-images.githubusercontent.com/100410542/155859912-f1a79709-af81-476d-8cc0-fb79cfa51285.png)
+ 
+ 
+ ![image](https://user-images.githubusercontent.com/100410542/155859930-b3ade0a3-b68b-4a72-97bc-f73d301354d4.png)
+ 
+     congestion placement    run_placement
+     
+ ![image](https://user-images.githubusercontent.com/100410542/155859991-5b2b42ec-e1ff-4269-9759-aca3c953436a.png)
+
+**Magic tool to explore Layout of placement**
+
+      magic -T /home/prudhvivnkt/Desktop/work/tools/openlane_working_dir/pdks/sky130A/libs.tech/magic/sky130A.tech lef read ../../tmp/merged.lef def read picorv32a.placement.def
+  
+  ![image](https://user-images.githubusercontent.com/100410542/155860062-4191171b-e214-4f09-b3bb-212cf3241568.png)
+
+
+  **We also learnt about cell design flow with listing out Inputs, Design steps and Outputs with the help of the Inverter after having the knowledge of designing library the day has ended giving breif details of characteization flow stepts involved and use of GUNA software for generating timing, noise and power models**
+  
+  
+  ![Screenshot (9)](https://user-images.githubusercontent.com/100410542/155860108-24b54b97-6003-40d7-8b07-a9c705d050f7.png)
+
+
+
+
   
   
      

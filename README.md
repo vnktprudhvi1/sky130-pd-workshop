@@ -213,7 +213,7 @@ Day 2 workshop focused on chip floor planning and placement, where we learnt abo
  
    * Buffers are placed between inputs and cells to reduce the skew and save signal integrety.
   
-   * We place group group of cells together   
+   * We do abatement for some logic to reduce the time delay and to increase the performance for perticular section.      
   
   
      
